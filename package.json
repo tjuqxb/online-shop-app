@@ -1,0 +1,24 @@
+{
+  "name": "shop",
+  "version": "1.0.0",
+  "description": "simple shop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "restify",
+    "mongodb",
+    "antd",
+    "react"
+  ],
+  "author": "Alex Qian",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.9.15",
+    "restify": "^8.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.0.0"
+  }
+}
