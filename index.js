@@ -6,6 +6,8 @@ const  User = require("./models/user");
 
 const app = restify.createServer();
 
+app.use(restify.plugins.bodyParser());
+
 app.get("/", (req, res, next) => {
     res.send(200, {
         code: "success",
@@ -14,11 +16,9 @@ app.get("/", (req, res, next) => {
     next();
 });
 
-app.get('/users',async (req, res, next) => {
-    const users = await User.find({});
-    res.send(users);
-    next();
-})
+
+require('./routers/api/admin/users')(app); // import user resource router
+
 
 app.listen(3005, () => {
     mongoose.set('useNewUrlParser', true);
@@ -28,8 +28,6 @@ app.listen(3005, () => {
     mongoose.connect("mongodb://localhost/shop_app");
     const db = mongoose.connection;
     db.on("open", async ()=> {
-        const example = new User({userName: "test", password: "123"});
-        const save = await example.save();
         console.log("connected!");
     });
     db.on("error",(error) => {
