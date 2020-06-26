@@ -10,5 +10,5 @@
 2 Product
     > name, descriptions, price, quantity, coverImg
    
-3 ShopCart
+3 ShopCarts
     > user, product, quantity 

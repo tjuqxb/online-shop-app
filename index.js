@@ -18,7 +18,10 @@ app.get("/", (req, res, next) => {
 
 
 require('./routers/api/admin/users')(app); // import user resource router
-
+require('./routers/api/admin/products')(app); // import product resource router
+require('./routers/api/products')(app);
+require('./routers/api/users')(app);
+require('./routers/api/shopCarts')(app);
 
 app.listen(3005, () => {
     mongoose.set('useNewUrlParser', true);
