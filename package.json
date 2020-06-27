@@ -16,10 +16,12 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.15",
     "restful": "^0.4.5",
     "restify": "^8.5.1",
-    "restify-errors": "^8.0.2"
+    "restify-errors": "^8.0.2",
+    "restify-jwt-community": "^1.1.4"
   },
   "devDependencies": {
     "eslint": "^7.0.0"

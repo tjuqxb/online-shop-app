@@ -1,6 +1,7 @@
 const {User} = require('../../models');
 const errors = require('restify-errors');
 const  bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const usersRoute = (app) => {
     app.post('/api/users/login', async (req, res, next) => {
@@ -11,7 +12,13 @@ const usersRoute = (app) => {
                 //password compare
                const isValidated = bcrypt.compareSync(password, user.password);
                 if (isValidated) {
-                    res.send(user);
+                    const token = jwt.sign({
+                        userId: user.id,
+                    },'placeHolder', {expiresIn: '10h'});
+                    res.send({
+                        code: 'success',
+                        token
+                    });
                 } else {
                     res.send ({
                        code:'error',
@@ -41,7 +48,13 @@ const usersRoute = (app) => {
                 const pwd = bcrypt.hashSync(password, salt);
                 user.password = pwd;
                 const userRet = await user.save();
-                res.send(userRet);
+                const token = jwt.sign({
+                    userId: userRet.id,
+                },'placeHolder', {expiresIn: '10h'});
+                res.send({
+                    code:'success',
+                    token
+                });
             } else {
                 res.send({
                     code: 'error',

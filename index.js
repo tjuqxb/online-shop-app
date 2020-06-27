@@ -1,12 +1,15 @@
 const restify = require("restify");
-
-
 const  mongoose = require("mongoose");
 const  User = require("./models/user");
+const rjc = require('restify-jwt-community');
 
 const app = restify.createServer();
 
 app.use(restify.plugins.bodyParser());
+
+app.use(rjc({secret: 'placeHolder'}).unless({
+    path:['/api/users/login','/api/users/reg','/api/products', new RegExp('/admin/*')]
+}));
 
 app.get("/", (req, res, next) => {
     res.send(200, {
