@@ -4,7 +4,9 @@
   "description": "simple shop",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client": "npm start --prefix client",
+    "server": "nodemon index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [
     "restify",
@@ -16,14 +18,17 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "create-umi": "^0.24.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.15",
+    "nodemon": "^2.0.4",
     "restful": "^0.4.5",
     "restify": "^8.5.1",
     "restify-errors": "^8.0.2",
     "restify-jwt-community": "^1.1.4"
   },
   "devDependencies": {
+    "concurrently": "^5.2.0",
     "eslint": "^7.0.0"
   }
 }

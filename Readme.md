@@ -14,4 +14,7 @@
     > user, product, quantity 
     
 #### client
- 
+    > use create-umi
+    > use concurrently pugins start server and client 
+    > use Ant Design UI
+    > use dva
