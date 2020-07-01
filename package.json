@@ -24,6 +24,7 @@
     "nodemon": "^2.0.4",
     "restful": "^0.4.5",
     "restify": "^8.5.1",
+    "restify-cors-middleware": "^1.1.1",
     "restify-errors": "^8.0.2",
     "restify-jwt-community": "^1.1.4"
   },

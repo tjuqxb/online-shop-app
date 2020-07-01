@@ -7,6 +7,15 @@ const app = restify.createServer();
 
 app.use(restify.plugins.bodyParser());
 
+const corsMiddleware = require('restify-cors-middleware')
+
+const cors = corsMiddleware({
+    origins: ["*"],
+});
+
+app.pre(cors.preflight);
+app.use(cors.actual);
+
 app.use(rjc({secret: 'placeHolder'}).unless({
     path:['/api/users/login','/api/users/reg','/api/products', new RegExp('/admin/*')]
 }));

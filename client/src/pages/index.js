@@ -1,19 +1,35 @@
 import styles from './index.css';
 import {Button} from 'antd-mobile';
+import React from "react";
+import {connect} from 'dva';
 
-export default function() {
-  return (
-    <div className={styles.normal}>
-      <div className={styles.welcome} />
-      <Button type= 'primary'> click</Button>
-      <ul className={styles.list}>
-        <li>To get started, edit <code>src/pages/index.js</code> and save to reload.</li>
-        <li>
-          <a href="https://umijs.org/guide/getting-started.html">
-            Getting Started
-          </a>
-        </li>
+class Index extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount() {
+    const {dispatch} = this.props;
+    dispatch({
+      type:'product/loadProduct'
+    });
+  }
+
+  render() {
+    console.log(this.props.list);
+    return <div>
+      <ul>
+        {this.props.list.map(p=> {
+          return (<li key = {p._id}>{p.name}</li>)
+        })}
       </ul>
     </div>
-  );
+  }
 }
+
+const mapStateToProps = (state)=> {
+  return state.product;
+};
+
+export default connect(mapStateToProps)(Index);
