@@ -19,7 +19,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "create-umi": "^0.24.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.9.15",
     "nodemon": "^2.0.4",
     "restful": "^0.4.5",
